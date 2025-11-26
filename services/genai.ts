@@ -11,7 +11,7 @@ const ensurePaidKey = async (): Promise<void> => {
   }
 };
 
-const getClient = () => new GoogleGenAI({ apiKey: process.env.API_KEY });
+const getClient = () => new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 export const generateResponse = async (
   mode: AppMode,
@@ -60,7 +60,7 @@ export const generateResponse = async (
     if (!videoUri) throw new Error("Video generation failed or returned no URI");
 
     // Append key for download
-    const finalUrl = `${videoUri}&key=${process.env.API_KEY}`;
+    const finalUrl = `${videoUri}&key=${process.env.GEMINI_API_KEY}`;
     return { mediaUrl: finalUrl, mediaType: 'video' };
   }
 
